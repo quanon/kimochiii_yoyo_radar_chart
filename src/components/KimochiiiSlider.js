@@ -20,13 +20,14 @@ const KimochiiiSlider = ({
 
     setValue(v);
   };
+  const descriptionFontSize = description.length <= 15 ? '0.6rem' : '0.55rem';
 
   return (
     <Box>
       <Typography sx={{ fontSize: '0.8rem' }} gutterBottom>
         {label}
       </Typography>
-      <Typography variant="caption" gutterBottom sx={{ fontSize: '0.5rem', display: 'block', mb: 0 }}>
+      <Typography variant="caption" gutterBottom sx={{ fontSize: descriptionFontSize, display: 'block', mb: 0, minHeight: "16px" }}>
         {description}
       </Typography>
       <Slider
