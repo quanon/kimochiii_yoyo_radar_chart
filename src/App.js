@@ -39,7 +39,7 @@ const axises = [
   },
   {
     label: 'フィット',
-    description: '形状・サイズが起因するもち心地のよさ',
+    description: '形状・サイズが起因する持ち心地のよさ',
     defaultValue: 3
   }
 ];
