@@ -16,7 +16,7 @@ const KimochiiiRadarChart = ({ labels, values }) => {
     }
   });
   return (
-    <ResponsiveContainer minHeight={300}>
+    <ResponsiveContainer minWidth={300} minHeight={300}>
       <RadarChart
         data={data}
       >

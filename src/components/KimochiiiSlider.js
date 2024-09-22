@@ -21,7 +21,7 @@ const KimochiiiSlider = ({ label, description, defaultValue, setValue }) => {
       <Typography sx={{ fontSize: '0.8rem' }} gutterBottom>
         {label}
       </Typography>
-      <Typography variant="caption" gutterBottom sx={{ fontSize: '0.5rem', display: 'block' }}>
+      <Typography variant="caption" gutterBottom sx={{ fontSize: '0.5rem', display: 'block', mb: 0 }}>
         {description}
       </Typography>
       <Slider
@@ -30,6 +30,7 @@ const KimochiiiSlider = ({ label, description, defaultValue, setValue }) => {
         marks={marks}
         min={0}
         max={5}
+        size="small"
         onChange={onChange}
         onChangeCommitted={
           (e, value) => {

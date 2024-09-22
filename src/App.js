@@ -5,6 +5,7 @@ import KimochiiiSlider from "./components/KimochiiiSlider";
 import Box from '@mui/material/Box';
 import Grid from '@mui/system/Grid';
 import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -55,10 +56,10 @@ const App = () => {
 
   return (
     <Box sx={{ px: 2 }}>
-      <Grid container spacing={2}>
+      <Grid container rowSpacing={1} columnSpacing={2}>
         <Grid size={2}></Grid>
         <Grid size={8}>
-          <Box display="flex" alignItems="center" justifyContent="center" pt={2}>
+          <Box display="flex" alignItems="center" justifyContent="center" pt={1}>
             <TextField label="Yo-Yo" variant="standard" width={300} slotProps={{ htmlInput: { style: { textAlign: 'center' } } }} />
           </Box>
         </Grid>
