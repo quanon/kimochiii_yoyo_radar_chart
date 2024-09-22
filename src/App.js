@@ -73,6 +73,13 @@ const App = () => {
             </Grid>
           );
         })}
+        <Grid size={12}>
+          <Box display="flex" alignItems="center" justifyContent="center">
+            <Typography sx={{ fontSize: '0.6rem' }} gutterBottom>
+              This app is based on <a href="https://www.youtube.com/watch?v=ts6CJosyLHk">this video</a>.
+            </Typography>
+          </Box>
+        </Grid>
       </Grid>
     </Box>
   );
