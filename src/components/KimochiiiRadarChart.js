@@ -22,7 +22,7 @@ const KimochiiiRadarChart = ({ labels, values }) => {
       >
         <PolarGrid />
         <PolarAngleAxis dataKey="subject" tick={{ fontSize: '0.8rem' }} />
-        <PolarRadiusAxis angle={30} domain={[0, 5]} tickCount={6}tick={{ fontSize: '0.8rem' }} />
+        <PolarRadiusAxis angle={30} domain={[0, 5]} tickCount={6} tick={{ fontSize: '0.8rem' }} />
         <Radar
           dataKey="A"
           stroke="#1976d2"

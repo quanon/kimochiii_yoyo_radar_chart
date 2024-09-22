@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import Typography from '@mui/material/Typography';
 
@@ -5,7 +6,7 @@ const marks = [0, 1, 2, 3, 4, 5].map((n) => {
   return { value: n };
 });
 
-const KimochiiiSlider = ({ label, description, defaultValue, setValue }) => {
+const KimochiiiSlider = ({ key, label, description, defaultValue, setValue }) => {
   const userAgent = navigator.userAgent;
   const isIOS = userAgent.indexOf("iPhone") >= 0 || userAgent.indexOf("iPad") >= 0 || userAgent.indexOf("iPod") >= 0
   const onChange = (e, value) => {
@@ -17,7 +18,7 @@ const KimochiiiSlider = ({ label, description, defaultValue, setValue }) => {
   };
 
   return (
-    <>
+    <Box key={key}>
       <Typography sx={{ fontSize: '0.8rem' }} gutterBottom>
         {label}
       </Typography>
@@ -41,7 +42,7 @@ const KimochiiiSlider = ({ label, description, defaultValue, setValue }) => {
           }
         }
       />
-    </>
+    </Box>
   );
 }
 

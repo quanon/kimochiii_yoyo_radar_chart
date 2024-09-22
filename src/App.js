@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import { useState } from "react";
 import KimochiiiRadarChart from "./components/KimochiiiRadarChart";
 import KimochiiiSlider from "./components/KimochiiiSlider";
 import Box from '@mui/material/Box';
@@ -45,11 +45,15 @@ const axises = [
 ];
 
 const App = () => {
-  const [values, setValues] = useState(axises.map((axis) => axis.defaultValue));
+  const [name, setName] = useState(localStorage.getItem('name'));
+  const storedValues = localStorage.getItem('values');
+  const initialValues = storedValues ? JSON.parse(storedValues).map((n) => Number(n)) : axises.map((axis) => axis.defaultValue)
+  const [values, setValues] = useState(initialValues);
   const setValueAt = (index) => {
     return (value) => {
       const newValues = [...values];
       newValues[index] = value;
+      localStorage.setItem('values', JSON.stringify(newValues));
       setValues(newValues);
     };
   };
@@ -60,7 +64,14 @@ const App = () => {
         <Grid size={2}></Grid>
         <Grid size={8}>
           <Box display="flex" alignItems="center" justifyContent="center" pt={1}>
-            <TextField label="Yo-Yo" variant="standard" width={300} slotProps={{ htmlInput: { style: { textAlign: 'center' } } }} />
+            <TextField
+              label="Yo-Yo" variant="standard" width={300} slotProps={{ htmlInput: { style: { textAlign: 'center' } } }} defaultValue={name}
+              onChange={(e) => {
+                const value = e.currentTarget.value;
+                localStorage.setItem('name', value);
+                setName(value);
+              }}
+            />
           </Box>
         </Grid>
         <Grid size={2}></Grid>
@@ -69,8 +80,8 @@ const App = () => {
         </Grid>
         {axises.map((axis, i) => {
           return (
-            <Grid size={6} key={`slider-${i + 1}`}>
-              <KimochiiiSlider label={axis.label} description={axis.description} defaultValue={axis.defaultValues} setValue={setValueAt(i)} />
+            <Grid size={6} key={`slider-wrapper-${i}`}>
+              <KimochiiiSlider key={`slider-${i}`} label={axis.label} description={axis.description} defaultValue={initialValues[i]} setValue={setValueAt(i)} />
             </Grid>
           );
         })}
