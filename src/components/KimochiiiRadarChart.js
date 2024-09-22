@@ -7,35 +7,13 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const KimochiiiRadarChart = ({ values }) => {
-  const axises = [
-    {
-      subject: '維持力',
-      fullMark: 5
-    },
-    {
-      subject: 'DENSE',
-      fullMark: 5
-    },
-    {
-      subject: 'FLOATY',
-      fullMark: 5
-    },
-    {
-      subject: '投げ戻り',
-      fullMark: 5
-    },
-    {
-      subject: 'タッチ',
-      fullMark: 5
-    },
-    {
-      subject: 'フィット',
-      fullMark: 5
+const KimochiiiRadarChart = ({ labels, values }) => {
+  const data = labels.map((label, i) => {
+    return {
+      subject: label,
+      fullMark: 5,
+      A: values[i]
     }
-  ];
-  const data = values.map((value, i) => {
-    return Object.assign({}, axises[i], { A: value });
   });
   return (
     <ResponsiveContainer minHeight={300}>

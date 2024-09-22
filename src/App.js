@@ -1,19 +1,57 @@
 
 import React, { useState } from "react";
 import KimochiiiRadarChart from "./components/KimochiiiRadarChart";
+import KimochiiiSlider from "./components/KimochiiiSlider";
 import Box from '@mui/material/Box';
-import Slider from '@mui/material/Slider';
-import Typography from '@mui/material/Typography';
 import Grid from '@mui/system/Grid';
 import TextField from '@mui/material/TextField';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
-const defaultValues = [2.5, 2.5, 2.5, 2.5, 2.5, 2.5];
-const marks = [0, 1, 2, 3, 4, 5].map((n) => {
-  return { value: n };
-});
+const axises = [
+  {
+    label: '維持力',
+    description: 'いいフィーリングの持続性',
+    defaultValue: 3
+  },
+  {
+    label: 'DENSE',
+    description: '存在感 + 柔らかさ',
+    defaultValue: 3
+  },
+  {
+    label: 'FLOATY',
+    description: '軽快さ + ソリッド感',
+    defaultValue: 3
+  },
+  {
+    label: '投げ戻り',
+    description: '投げ出しとバインド時の心地よさ',
+    defaultValue: 3
+  },
+  {
+    label: 'タッチ',
+    description: 'ストリングヒット時の感触のよさ',
+    defaultValue: 3
+  },
+  {
+    label: 'フィット',
+    description: '形状・サイズが起因するもち心地のよさ',
+    defaultValue: 3
+  }
+];
 
 const App = () => {
-  const [values, setValues] = useState(defaultValues);
+  const [values, setValues] = useState(axises.map((axis) => axis.defaultValue));
+  const setValueAt = (index) => {
+    return (value) => {
+      const newValues = [...values];
+      newValues[index] = value;
+      setValues(newValues);
+    };
+  };
 
   return (
     <Box sx={{ px: 2 }}>
@@ -26,124 +64,15 @@ const App = () => {
         </Grid>
         <Grid size={2}></Grid>
         <Grid size={12}>
-          <div>
-            <KimochiiiRadarChart values={values} />
-          </div>
+          <KimochiiiRadarChart labels={axises.map((axis) => axis.label)} values={values} />
         </Grid>
-        <Grid size={6}>
-          <Typography sx={{ fontSize: '0.8rem' }} gutterBottom>
-            維持力
-          </Typography>
-          <Slider
-            defaultValue={defaultValues[0]}
-            step={0.5}
-            marks={marks}
-            min={0}
-            max={5}
-            onChange={
-              (e, value) => {
-                const newValues = [...values];
-                newValues[0] = value;
-                setValues(newValues);
-              }
-            }
-          />
-        </Grid>
-        <Grid size={6}>
-          <Typography sx={{ fontSize: '0.8rem' }} gutterBottom>
-            DENSE
-          </Typography>
-          <Slider
-            defaultValue={defaultValues[1]}
-            step={0.5}
-            marks={marks}
-            min={0}
-            max={5}
-            onChange={
-              (e, value) => {
-                const newValues = [...values];
-                newValues[1] = value;
-                setValues(newValues);
-              }
-            }
-          />
-        </Grid>
-        <Grid size={6}>
-          <Typography sx={{ fontSize: '0.8rem' }} gutterBottom>
-            FLOATY
-          </Typography>
-          <Slider
-            defaultValue={defaultValues[2]}
-            step={0.5}
-            marks={marks}
-            min={0}
-            max={5}
-            onChange={
-              (e, value) => {
-                const newValues = [...values];
-                newValues[2] = value;
-                setValues(newValues);
-              }
-            }
-          />
-        </Grid>
-        <Grid size={6}>
-          <Typography sx={{ fontSize: '0.8rem' }} gutterBottom>
-            投げ戻り
-          </Typography>
-          <Slider
-            defaultValue={defaultValues[3]}
-            step={0.5}
-            marks={marks}
-            min={0}
-            max={5}
-            onChange={
-              (e, value) => {
-                const newValues = [...values];
-                newValues[3] = value;
-                setValues(newValues);
-              }
-            }
-          />
-        </Grid>
-        <Grid size={6}>
-          <Typography sx={{ fontSize: '0.8rem' }} gutterBottom>
-            タッチ
-          </Typography>
-          <Slider
-            defaultValue={defaultValues[4]}
-            step={0.5}
-            marks={marks}
-            min={0}
-            max={5}
-            onChange={
-              (e, value) => {
-                const newValues = [...values];
-                newValues[4] = value;
-                setValues(newValues);
-              }
-            }
-          />
-        </Grid>
-        <Grid size={6}>
-          <Typography sx={{ fontSize: '0.8rem' }} gutterBottom>
-            フィット
-          </Typography>
-          <Slider
-            defaultValue={defaultValues[5]}
-            step={0.5}
-            marks={marks}
-            min={0}
-            max={5}
-            onChange={
-              (e, value) => {
-                const newValues = [...values];
-                newValues[5] = value;
-                setValues(newValues);
-              }
-            }
-          />
-        </Grid>
+        {axises.map((axis, i) => {
+          return (
+            <Grid size={6}>
+              <KimochiiiSlider label={axis.label} description={axis.description} defaultValue={axis.defaultValues} setValue={setValueAt(i)} />
+            </Grid>
+          );
+        })}
       </Grid>
     </Box>
   );
