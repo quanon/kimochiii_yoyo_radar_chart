@@ -4,10 +4,10 @@ import Typography from '@mui/material/Typography';
 const marks = [0, 1, 2, 3, 4, 5].map((n) => {
   return { value: n };
 });
-const userAgent = navigator.userAgent;
-const isIOS = userAgent.indexOf("iPhone") >= 0 || userAgent.indexOf("iPad") >= 0 || userAgent.indexOf("iPod") >= 0
 
 const KimochiiiSlider = ({ label, description, defaultValue, setValue }) => {
+  const userAgent = navigator.userAgent;
+  const isIOS = userAgent.indexOf("iPhone") >= 0 || userAgent.indexOf("iPad") >= 0 || userAgent.indexOf("iPod") >= 0
   const onChange = (e, value) => {
     if (isIOS && e.type === "mousedown") {
       return;
