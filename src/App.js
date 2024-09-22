@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import KimochiiiRadarChart from "./components/KimochiiiRadarChart";
 import KimochiiiSlider from "./components/KimochiiiSlider";
+import Footer from "./components/Footer";
 import Box from "@mui/material/Box";
 import Grid from "@mui/system/Grid";
 import TextField from "@mui/material/TextField";
@@ -47,8 +48,7 @@ const axises = [
 const App = () => {
   const [name, setName] = useState(localStorage.getItem("name"));
   const storedValues = localStorage.getItem("values");
-  const initialValues = storedValues ? JSON.parse(storedValues).map((n) => Number(n)) : axises.map((axis) => axis.defaultValue)
-  const [values, setValues] = useState(initialValues);
+  const [values, setValues] = useState(storedValues ? JSON.parse(storedValues).map((n) => Number(n)) : axises.map((axis) => axis.defaultValue));
   const setValueAt = (index) => {
     return (value) => {
       const newValues = [...values];
@@ -59,11 +59,11 @@ const App = () => {
   };
 
   return (
-    <Box sx={{ px: 2 }}>
-      <Grid container rowSpacing={1} columnSpacing={2}>
-        <Grid size={2}></Grid>
+    <Box sx={{ px: 1.5 }}>
+      <Grid container rowSpacing={0.5} columnSpacing={2}>
+        <Grid size={2} />
         <Grid size={8}>
-          <Box display="flex" alignItems="center" justifyContent="center" pt={1}>
+          <Box display="flex" alignItems="center" justifyContent="center" pt={2}>
             <TextField
               label="Yo-Yo" variant="standard" slotProps={{ htmlInput: { style: { textAlign: "center" } } }} defaultValue={name}
               onChange={(e) => {
@@ -74,23 +74,19 @@ const App = () => {
             />
           </Box>
         </Grid>
-        <Grid size={2}></Grid>
+        <Grid size={2} />
         <Grid size={12}>
           <KimochiiiRadarChart labels={axises.map((axis) => axis.label)} values={values} />
         </Grid>
         {axises.map((axis, i) => {
           return (
             <Grid size={6} key={`slider-wrapper-${i}`}>
-              <KimochiiiSlider key={`slider-${i}`} label={axis.label} description={axis.description} defaultValue={initialValues[i]} setValue={setValueAt(i)} />
+              <KimochiiiSlider index={i} label={axis.label} description={axis.description} value={values[i]} setValue={setValueAt(i)} />
             </Grid>
           );
         })}
         <Grid size={12}>
-          <Box display="flex" alignItems="center" justifyContent="center">
-            <Typography sx={{ fontSize: "0.5rem" }} color="rgba(0, 0, 0, 0.6)" gutterBottom>
-              This app is based on <a href="https://www.youtube.com/watch?v=ts6CJosyLHk">this video</a>. Please contact <a href="https://x.com/quanon_jp">@quanon_jp</a> if you have any questions.
-            </Typography>
-          </Box>
+          <Footer />
         </Grid>
       </Grid>
     </Box>

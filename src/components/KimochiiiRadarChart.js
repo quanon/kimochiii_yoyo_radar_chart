@@ -34,7 +34,7 @@ const KimochiiiRadarChart = ({ labels, values }) => {
       </RadarChart>
     </ResponsiveContainer>
   );
-}
+};
 
 KimochiiiRadarChart.propTypes = {
   labels: PropTypes.array.isRequired,

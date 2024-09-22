@@ -8,7 +8,7 @@ const marks = [0, 1, 2, 3, 4, 5].map((n) => {
   return { value: n };
 });
 
-const KimochiiiSlider = ({ key, label, description, defaultValue, setValue }) => {
+const KimochiiiSlider = ({ index, label, description, value, setValue }) => {
   const userAgent = navigator.userAgent;
   const isIOS = userAgent.indexOf("iPhone") >= 0 || userAgent.indexOf("iPad") >= 0 || userAgent.indexOf("iPod") >= 0
   const onChange = (e, value) => {
@@ -20,7 +20,7 @@ const KimochiiiSlider = ({ key, label, description, defaultValue, setValue }) =>
   };
 
   return (
-    <Box key={key}>
+    <Box>
       <Typography sx={{ fontSize: "0.8rem" }} gutterBottom>
         {label}
       </Typography>
@@ -28,7 +28,8 @@ const KimochiiiSlider = ({ key, label, description, defaultValue, setValue }) =>
         {description}
       </Typography>
       <Slider
-        defaultValue={defaultValue}
+        key={`slider-${index}`}
+        value={value}
         step={0.5}
         marks={marks}
         min={0}
@@ -46,13 +47,13 @@ const KimochiiiSlider = ({ key, label, description, defaultValue, setValue }) =>
       />
     </Box>
   );
-}
+};
 
 KimochiiiSlider.propTypes = {
-  key: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
   label: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  defaultValue: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
   setValue: PropTypes.func.isRequired
 };
 
