@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/system/Grid';
+import TextField from '@mui/material/TextField';
 
 const defaultValues = [2.5, 2.5, 2.5, 2.5, 2.5, 2.5];
 const marks = [0, 1, 2, 3, 4, 5].map((n) => {
@@ -17,6 +18,13 @@ const App = () => {
   return (
     <Box sx={{ px: 2 }}>
       <Grid container spacing={2}>
+        <Grid size={2}></Grid>
+        <Grid size={8}>
+          <Box display="flex" alignItems="center" justifyContent="center" pt={2}>
+            <TextField label="Yo-Yo" variant="standard" width={300} slotProps={{ htmlInput: { style: { textAlign: 'center' } } }} />
+          </Box>
+        </Grid>
+        <Grid size={2}></Grid>
         <Grid size={12}>
           <div>
             <KimochiiiRadarChart values={values} />
