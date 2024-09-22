@@ -1,3 +1,5 @@
+import React from "react";
+import PropTypes from "prop-types";
 import {
   RadarChart,
   PolarGrid,
@@ -21,8 +23,8 @@ const KimochiiiRadarChart = ({ labels, values }) => {
         data={data}
       >
         <PolarGrid />
-        <PolarAngleAxis dataKey="subject" tick={{ fontSize: '0.8rem' }} />
-        <PolarRadiusAxis angle={30} domain={[0, 5]} tickCount={6} tick={{ fontSize: '0.8rem' }} />
+        <PolarAngleAxis dataKey="subject" tick={{ fontSize: "0.8rem" }} />
+        <PolarRadiusAxis angle={30} domain={[0, 5]} tickCount={6} tick={{ fontSize: "0.8rem" }} />
         <Radar
           dataKey="A"
           stroke="#1976d2"
@@ -33,5 +35,10 @@ const KimochiiiRadarChart = ({ labels, values }) => {
     </ResponsiveContainer>
   );
 }
+
+KimochiiiRadarChart.propTypes = {
+  labels: PropTypes.array.isRequired,
+  values: PropTypes.array.isRequired
+};
 
 export default KimochiiiRadarChart;

@@ -1,6 +1,8 @@
-import Box from '@mui/material/Box';
-import Slider from '@mui/material/Slider';
-import Typography from '@mui/material/Typography';
+import React from "react";
+import PropTypes from "prop-types";
+import Box from "@mui/material/Box";
+import Slider from "@mui/material/Slider";
+import Typography from "@mui/material/Typography";
 
 const marks = [0, 1, 2, 3, 4, 5].map((n) => {
   return { value: n };
@@ -19,10 +21,10 @@ const KimochiiiSlider = ({ key, label, description, defaultValue, setValue }) =>
 
   return (
     <Box key={key}>
-      <Typography sx={{ fontSize: '0.8rem' }} gutterBottom>
+      <Typography sx={{ fontSize: "0.8rem" }} gutterBottom>
         {label}
       </Typography>
-      <Typography variant="caption" gutterBottom sx={{ fontSize: '0.5rem', display: 'block', mb: 0 }}>
+      <Typography variant="caption" gutterBottom sx={{ fontSize: "0.5rem", display: "block", mb: 0 }}>
         {description}
       </Typography>
       <Slider
@@ -45,5 +47,13 @@ const KimochiiiSlider = ({ key, label, description, defaultValue, setValue }) =>
     </Box>
   );
 }
+
+KimochiiiSlider.propTypes = {
+  key: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  defaultValue: PropTypes.number.isRequired,
+  setValue: PropTypes.func.isRequired
+};
 
 export default KimochiiiSlider;
