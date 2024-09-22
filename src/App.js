@@ -65,7 +65,7 @@ const App = () => {
         <Grid size={8}>
           <Box display="flex" alignItems="center" justifyContent="center" pt={1}>
             <TextField
-              label="Yo-Yo" variant="standard" width={300} slotProps={{ htmlInput: { style: { textAlign: 'center' } } }} defaultValue={name}
+              label="Yo-Yo" variant="standard" slotProps={{ htmlInput: { style: { textAlign: 'center' } } }} defaultValue={name}
               onChange={(e) => {
                 const value = e.currentTarget.value;
                 localStorage.setItem('name', value);
