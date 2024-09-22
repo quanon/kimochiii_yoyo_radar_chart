@@ -69,7 +69,7 @@ const App = () => {
         </Grid>
         {axises.map((axis, i) => {
           return (
-            <Grid size={6}>
+            <Grid size={6} key={`slider-${i + 1}`}>
               <KimochiiiSlider label={axis.label} description={axis.description} defaultValue={axis.defaultValues} setValue={setValueAt(i)} />
             </Grid>
           );
