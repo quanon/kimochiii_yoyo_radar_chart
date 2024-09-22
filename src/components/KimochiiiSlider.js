@@ -1,30 +1,32 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Box from "@mui/material/Box";
-import Slider from "@mui/material/Slider";
-import Typography from "@mui/material/Typography";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Box from '@mui/material/Box';
+import Slider from '@mui/material/Slider';
+import Typography from '@mui/material/Typography';
 
-const marks = [0, 1, 2, 3, 4, 5].map((n) => {
-  return { value: n };
-});
+const marks = [0, 1, 2, 3, 4, 5].map((n) => ({ value: n }));
+const isIOS = () => {
+  const { userAgent } = navigator;
 
-const KimochiiiSlider = ({ index, label, description, value, setValue }) => {
-  const userAgent = navigator.userAgent;
-  const isIOS = userAgent.indexOf("iPhone") >= 0 || userAgent.indexOf("iPad") >= 0 || userAgent.indexOf("iPod") >= 0
-  const onChange = (e, value) => {
-    if (isIOS && e.type === "mousedown") {
-      return;
-    } else {
-      setValue(value);
-    }
+  return userAgent.indexOf('iPhone') >= 0 || userAgent.indexOf('iPad') >= 0 || userAgent.indexOf('iPod') >= 0;
+};
+
+const KimochiiiSlider = ({
+  index, label, description, value, setValue
+}) => {
+  const onChangeSlider = (e, v) => {
+    // https://github.com/mui/material-ui/issues/32737
+    if (isIOS() && e.type === 'mousedown') return;
+
+    setValue(v);
   };
 
   return (
     <Box>
-      <Typography sx={{ fontSize: "0.8rem" }} gutterBottom>
+      <Typography sx={{ fontSize: '0.8rem' }} gutterBottom>
         {label}
       </Typography>
-      <Typography variant="caption" gutterBottom sx={{ fontSize: "0.5rem", display: "block", mb: 0 }}>
+      <Typography variant="caption" gutterBottom sx={{ fontSize: '0.5rem', display: 'block', mb: 0 }}>
         {description}
       </Typography>
       <Slider
@@ -35,13 +37,12 @@ const KimochiiiSlider = ({ index, label, description, value, setValue }) => {
         min={0}
         max={5}
         size="small"
-        onChange={onChange}
+        onChange={onChangeSlider}
         onChangeCommitted={
-          (e, value) => {
-            if (isIOS && e.type === "mouseup") {
-              return;
-            }
-            onChange(e, value)
+          (e, v) => {
+            if (isIOS() && e.type === 'mouseup') return;
+
+            onChangeSlider(e, v);
           }
         }
       />
