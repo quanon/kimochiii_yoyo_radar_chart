@@ -11,12 +11,21 @@ code {
 
 :root {
   --iphone-screen-width: 375px;
+  --ipad-screen-width: 768px;
 }
 
-@media (min-width: 375px) {
+@media (min-width: 0px) and (max-width: calc(var(--ipad-screen-width) - 1)) {
   .root {
     width: var(--iphone-screen-width);
     padding-left: calc((100% - var(--iphone-screen-width)) / 2);
     padding-right: calc((100% - var(--iphone-screen-width)) / 2);
+  }
+}
+
+@media (min-width: var(--ipad-screen-width)) {
+  .root {
+    width: var(--ipad-screen-width);
+    padding-left: calc((100% - var(--ipad-screen-width)) / 2);
+    padding-right: calc((100% - var(--ipad-screen-width)) / 2);
   }
 }

@@ -58,17 +58,20 @@ const App = () => {
       <Grid container rowSpacing={0.5} columnSpacing={2}>
         <Grid size={2} />
         <Grid size={8}>
-          <Box display="flex" alignItems="center" justifyContent="center" pt={2}>
-            <TextField
-              label="Yo-Yo"
-              variant="standard"
-              slotProps={{ htmlInput: { style: { textAlign: 'center' } } }}
-              defaultValue={name}
-              onChange={(e) => {
-                const { value } = e.currentTarget;
-                setName(value);
-              }}
-            />
+          <Box display="flex" alignItems="center" justifyContent="center" pt={1}>
+            <Box width={200}>
+              <TextField
+                label="Yo-Yo"
+                variant="standard"
+                slotProps={{ htmlInput: { style: { textAlign: 'center' } } }}
+                defaultValue={name}
+                onChange={(e) => {
+                  const { value } = e.currentTarget;
+                  setName(value);
+                }}
+                fullWidth
+              />
+            </Box>
           </Box>
         </Grid>
         <Grid size={2} />
