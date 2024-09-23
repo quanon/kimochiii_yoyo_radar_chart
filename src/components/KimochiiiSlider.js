@@ -38,6 +38,7 @@ const KimochiiiSlider = ({
         min={0}
         max={5}
         size="small"
+        sx={{ py: '13px !important' }}
         onChange={onChangeSlider}
         onChangeCommitted={
           (e, v) => {

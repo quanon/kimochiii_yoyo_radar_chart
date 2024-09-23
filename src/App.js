@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import KimochiiiRadarChart from './components/KimochiiiRadarChart';
 import KimochiiiSlider from './components/KimochiiiSlider';
+import KimochiiiSwitch from './components/KimochiiiSwitch';
 import Footer from './components/Footer';
 import Box from '@mui/material/Box';
 import Grid from '@mui/system/Grid';
 import TextField from '@mui/material/TextField';
+import Collapse from '@mui/material/Collapse';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -54,6 +56,10 @@ const App = () => {
     localStorage.setItem('values', JSON.stringify(newValues));
     setValues(newValues);
   };
+  const [checked, setChecked] = React.useState(true);
+  const onChangeSwitch = (e, v) => {
+    setChecked(v);
+  };
 
   return (
     <Box sx={{ px: 1.5 }}>
@@ -78,17 +84,28 @@ const App = () => {
         <Grid size={12}>
           <KimochiiiRadarChart labels={axises.map((axis) => axis.label)} values={values} />
         </Grid>
-        {axises.map((axis, i) => (
-            <Grid size={6} key={`slider-wrapper-${i}`}>
-              <KimochiiiSlider
-                index={i}
-                label={axis.label}
-                description={axis.description}
-                value={values[i]}
-                setValue={setValueAt(i)}
-              />
+        <Grid size={12}>
+          <Collapse in={checked} timeout="auto" unmountOnExit>
+            <Grid container rowSpacing={0} columnSpacing={1}>
+              {axises.map((axis, i) => (
+                  <Grid size={6} key={`slider-wrapper-${i}`}>
+                    <KimochiiiSlider
+                      index={i}
+                      label={axis.label}
+                      description={axis.description}
+                      value={values[i]}
+                      setValue={setValueAt(i)}
+                    />
+                  </Grid>
+              ))}
             </Grid>
-        ))}
+          </Collapse>
+        </Grid>
+        <Grid size={12}>
+          <Grid container justifyContent="flex-end">
+            <KimochiiiSwitch checked={checked} setChecked={setChecked} />
+          </Grid>
+        </Grid>
         <Grid size={12}>
           <Footer />
         </Grid>
