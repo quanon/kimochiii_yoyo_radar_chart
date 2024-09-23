@@ -14,7 +14,7 @@ code {
   --ipad-screen-width: 768px;
 }
 
-@media (min-width: 0px) and (max-width: calc(var(--ipad-screen-width) - 1)) {
+@media (min-width: 0px) and (max-width: calc(768px - 1px)) {
   .root {
     width: var(--iphone-screen-width);
     padding-left: calc((100% - var(--iphone-screen-width)) / 2);
@@ -22,7 +22,7 @@ code {
   }
 }
 
-@media (min-width: var(--ipad-screen-width)) {
+@media (min-width: 768px) {
   .root {
     width: var(--ipad-screen-width);
     padding-left: calc((100% - var(--ipad-screen-width)) / 2);

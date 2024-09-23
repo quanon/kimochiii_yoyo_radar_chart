@@ -1,1 +1,13 @@
+@media (min-width: 0px) and (max-width: calc(768px - 1px)) {
+  .recharts-responsive-container {
+    min-width: calc(var(--iphone-screen-width) - 10px);
+    min-height: calc(var(--iphone-screen-width) - 10px);
+  }
+}
 
+@media (min-width: 768px) {
+  .recharts-responsive-container {
+    min-width: calc(var(--ipad-screen-width) - 10px);
+    min-height: calc(var(--ipad-screen-width) - 10px);
+  }
+}

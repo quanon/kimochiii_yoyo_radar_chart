@@ -15,12 +15,9 @@ const KimochiiiRadarChart = ({ labels, values }) => {
     fullMark: 5,
     A: values[i]
   }));
-  let width = 350;
-  if (window.matchMedia('(min-width: 768px)').matches) {
-    width = 750;
-  }
+
   return (
-    <ResponsiveContainer minWidth={width} minHeight={width}>
+    <ResponsiveContainer>
       <RadarChart
         data={data}
       >

@@ -24,7 +24,7 @@ const KimochiiiSlider = ({
 
   return (
     <Box>
-      <Typography sx={{ fontSize: '0.8rem' }} gutterBottom>
+      <Typography sx={{ fontSize: '0.8rem', mb: 0 }} gutterBottom>
         {label}
       </Typography>
       <Typography variant="caption" gutterBottom sx={{

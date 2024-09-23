@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import KimochiiiYoyoName from './components/KimochiiiYoyoName';
 import KimochiiiRadarChart from './components/KimochiiiRadarChart';
 import KimochiiiSlider from './components/KimochiiiSlider';
