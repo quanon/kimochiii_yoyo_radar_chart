@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import KimochiiiRadarChart from './components/KimochiiiRadarChart';
 import KimochiiiSlider from './components/KimochiiiSlider';
 import KimochiiiSwitch from './components/KimochiiiSwitch';
-import Footer from './components/Footer';
+import KimochiiiFooter from './components/KimochiiiFooter';
 import Box from '@mui/material/Box';
 import Grid from '@mui/system/Grid';
 import TextField from '@mui/material/TextField';
@@ -107,7 +107,7 @@ const App = () => {
           </Grid>
         </Grid>
         <Grid size={12}>
-          <Footer />
+          <KimochiiiFooter />
         </Grid>
       </Grid>
     </Box>
