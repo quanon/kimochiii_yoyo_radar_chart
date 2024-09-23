@@ -1,3 +1,8 @@
+.recharts-responsive-container {
+  margin-top: -10px;
+  margin-bottom: -10px;
+}
+
 @media (min-width: 0px) and (max-width: calc(768px - 1px)) {
   .recharts-responsive-container {
     min-width: calc(var(--iphone-screen-width) - 10px);
