@@ -17,7 +17,7 @@ const KimochiiiYoyoName = ({ name, setName }) => (
 );
 
 KimochiiiYoyoName.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   setName: PropTypes.func.isRequired
 };
 
