@@ -1,11 +1,11 @@
 import React from 'react';
+import KimochiiiYoyoName from './components/KimochiiiYoyoName';
 import KimochiiiRadarChart from './components/KimochiiiRadarChart';
 import KimochiiiSlider from './components/KimochiiiSlider';
 import KimochiiiFooter from './components/KimochiiiFooter';
 import { useQueryState } from './useQueryState';
 import Box from '@mui/material/Box';
 import Grid from '@mui/system/Grid';
-import TextField from '@mui/material/TextField';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -60,17 +60,7 @@ const App = () => {
         <Grid size={8}>
           <Box display="flex" alignItems="center" justifyContent="center" pt={1}>
             <Box width={200}>
-              <TextField
-                label="Yo-Yo"
-                variant="standard"
-                slotProps={{ htmlInput: { style: { textAlign: 'center' } } }}
-                defaultValue={name}
-                onChange={(e) => {
-                  const { value } = e.currentTarget;
-                  setName(value);
-                }}
-                fullWidth
-              />
+              <KimochiiiYoyoName name={name} setName={setName} />
             </Box>
           </Box>
         </Grid>
