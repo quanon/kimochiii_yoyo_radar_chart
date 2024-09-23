@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import KimochiiiRadarChart from './components/KimochiiiRadarChart';
 import KimochiiiSlider from './components/KimochiiiSlider';
 import KimochiiiFooter from './components/KimochiiiFooter';
+import { useQueryState } from './useQueryState';
 import Box from '@mui/material/Box';
 import Grid from '@mui/system/Grid';
 import TextField from '@mui/material/TextField';
@@ -44,14 +45,11 @@ const axises = [
 ];
 
 const App = () => {
-  const [name, setName] = useState(localStorage.getItem('name'));
-  let storedValues = localStorage.getItem('values');
-  storedValues = storedValues ? JSON.parse(storedValues).map((n) => Number(n)) : null;
-  const [values, setValues] = useState(storedValues || axises.map((axis) => axis.defaultValue));
+  const [name, setName] = useQueryState('name');
+  const [values, setValues] = useQueryState('values', axises.map((axis) => axis.defaultValue));
   const setValueAt = (index) => (value) => {
     const newValues = [...values];
     newValues[index] = value;
-    localStorage.setItem('values', JSON.stringify(newValues));
     setValues(newValues);
   };
 
@@ -68,7 +66,6 @@ const App = () => {
               defaultValue={name}
               onChange={(e) => {
                 const { value } = e.currentTarget;
-                localStorage.setItem('name', value);
                 setName(value);
               }}
             />
